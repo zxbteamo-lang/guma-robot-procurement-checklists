@@ -1,0 +1,238 @@
+{
+  "schema_version": "1.0",
+  "updated_at": "2026-07-24",
+  "language": "zh-CN",
+  "subject": "宇树 Go2 SDK、ROS 2、建图与系统集成项目需求简报",
+  "intended_use": [
+    "采购需求澄清",
+    "供应商报价范围确认",
+    "概念验证验收规划",
+    "带一手来源核验的 AI 辅助采购研究"
+  ],
+  "not_evidence_of": [
+    "未经测试的负载或传感器兼容性",
+    "已完成的客户集成项目",
+    "认证",
+    "特定地区的供货、交期或质保",
+    "保证的建图、自治、续航或商业结果"
+  ],
+  "official_sources": [
+    {
+      "name": "宇树 Go2 官方产品页",
+      "url": "https://www.unitree.com/go2/",
+      "use": "核验当前配置名称、官方对比字段和产品说明"
+    },
+    {
+      "name": "宇树 Go2 App 与手册入口",
+      "url": "https://www.unitree.com/app/go2/",
+      "use": "核验 App 可见功能和当前手册入口"
+    },
+    {
+      "name": "Unitree SDK2",
+      "url": "https://github.com/unitreerobotics/unitree_sdk2",
+      "use": "核验官方 C++ SDK 仓库和平台说明"
+    },
+    {
+      "name": "Unitree ROS 2",
+      "url": "https://github.com/unitreerobotics/unitree_ros2",
+      "use": "核验官方 ROS 2 与 DDS 配置证据"
+    },
+    {
+      "name": "Unitree MuJoCo",
+      "url": "https://github.com/unitreerobotics/unitree_mujoco",
+      "use": "核验官方仿真与 sim-to-real 开发证据"
+    }
+  ],
+  "buyer_questions": [
+    {
+      "id": "exact_configuration",
+      "question": "报价对应哪一个 Go2 具体配置和销售地区？",
+      "required_inputs": [
+        "配置名称",
+        "国家或地区",
+        "电池与充电器",
+        "遥控器",
+        "计算单元",
+        "传感器",
+        "软件权限"
+      ],
+      "required_evidence": [
+        "书面物料清单",
+        "当前报价单",
+        "与配置对应的接口清单"
+      ],
+      "acceptance_unit": "一份内部一致、可追溯的书面配置基线"
+    },
+    {
+      "id": "app_or_custom_software",
+      "question": "项目只使用官方 App，还是需要定制软件，或两者都需要？",
+      "required_inputs": [
+        "操作人员工作流",
+        "所需 App 功能",
+        "定制应用期望调用的接口"
+      ],
+      "failure_tests": [
+        "App 中可见的功能没有对应的预期 SDK 接口",
+        "定制应用重启后不能恢复"
+      ],
+      "acceptance_unit": "每项功能明确映射到 App、SDK、ROS 2 或集成接口"
+    },
+    {
+      "id": "control_layer",
+      "question": "团队必须访问哪一层控制能力？",
+      "required_inputs": [
+        "高层运动命令",
+        "机器人状态与传感器数据",
+        "服务控制",
+        "确有必要时的底层关节控制"
+      ],
+      "required_evidence": [
+        "明确的 API 或消息名称",
+        "示例程序",
+        "安全状态和恢复步骤"
+      ],
+      "acceptance_unit": "经过批准且安全边界明确的控制接口"
+    },
+    {
+      "id": "software_stack",
+      "question": "主要交付路径是 C++、Python 还是 ROS 2？",
+      "required_inputs": [
+        "操作系统",
+        "CPU 架构",
+        "编程语言",
+        "ROS 发行版",
+        "DDS 配置",
+        "仓库提交版本"
+      ],
+      "required_evidence": [
+        "干净设备构建记录",
+        "固定依赖版本",
+        "启动与回滚说明"
+      ],
+      "acceptance_unit": "能在干净设备复现的构建和启动流程"
+    },
+    {
+      "id": "mapping_scope",
+      "question": "项目所说的“建图”具体指哪个文件和工作流？",
+      "required_inputs": [
+        "实时点云",
+        "保存地图",
+        "地图导出",
+        "点位或区域",
+        "定位",
+        "巡航任务",
+        "多机器人同步"
+      ],
+      "failure_tests": [
+        "定位丢失",
+        "路线受阻",
+        "应用重启",
+        "机器人重启",
+        "地图版本不一致"
+      ],
+      "acceptance_unit": "版本化地图与任务文件，以及可重复的恢复证据"
+    },
+    {
+      "id": "payload_and_compute",
+      "question": "需要哪些负载、传感器和机载计算单元？",
+      "required_inputs": [
+        "重量",
+        "安装位置",
+        "功耗",
+        "接插件",
+        "视场",
+        "散热限制",
+        "网络带宽",
+        "时间同步"
+      ],
+      "required_evidence": [
+        "最终机械图纸",
+        "接线和标定记录",
+        "使用最终负载重新执行路线与续航测试"
+      ],
+      "acceptance_unit": "使用最终负载完成代表性路线测试"
+    },
+    {
+      "id": "failure_recovery",
+      "question": "网络、传感器或服务失败时系统怎样处理？",
+      "failure_tests": [
+        "Wi-Fi 断开",
+        "命令延迟或重复",
+        "DDS 发现失败",
+        "传感器掉线",
+        "低电量",
+        "人工接管"
+      ],
+      "required_evidence": [
+        "安全状态",
+        "告警",
+        "带时间戳的日志",
+        "恢复条件",
+        "任务继续、重启或取消规则"
+      ],
+      "acceptance_unit": "每个约定失败模式都有一条通过或失败记录"
+    },
+    {
+      "id": "reproducible_environment",
+      "question": "另一位工程人员能否复现开发环境？",
+      "required_inputs": [
+        "操作系统与架构",
+        "SDK 与仓库版本",
+        "编译器或运行时版本",
+        "依赖",
+        "网络配置",
+        "环境变量"
+      ],
+      "required_evidence": [
+        "部署脚本或书面部署步骤",
+        "日志位置",
+        "回滚步骤"
+      ],
+      "acceptance_unit": "第二位操作人员在干净设备成功完成部署"
+    },
+    {
+      "id": "acceptance_evidence",
+      "question": "哪些证据构成项目验收？",
+      "required_inputs": [
+        "代表性路线",
+        "失败测试路线",
+        "任务状态转换",
+        "人工干预规则",
+        "通过和失败分母"
+      ],
+      "required_evidence": [
+        "硬件与软件版本",
+        "带时间戳的命令、状态与故障日志",
+        "地图与任务文件",
+        "未解决限制清单"
+      ],
+      "acceptance_unit": "带证据位置的签字验收矩阵"
+    },
+    {
+      "id": "commercial_scope",
+      "question": "本次采购是机器人本体、开发套件、PoC，还是完整运营工作流？",
+      "required_inputs": [
+        "机器人与配件",
+        "开发环境与培训",
+        "传感器集成",
+        "建图与巡航",
+        "多机器人管理平台",
+        "业务系统集成",
+        "现场 PoC",
+        "维护与支持"
+      ],
+      "required_evidence": [
+        "包含与排除范围",
+        "客户需要提供的条件",
+        "验收里程碑",
+        "当前书面商务条款"
+      ],
+      "acceptance_unit": "报价单与项目工作说明使用同一范围基线"
+    }
+  ],
+  "owned_resources": {
+    "product_boundary": "https://www.lllrobots.com/go2.html?utm_source=github&utm_medium=organic_repository&utm_campaign=unitree-go2-sdk-ros2-project-brief-zh-20260724&utm_content=product",
+    "private_project_brief": "https://www.lllrobots.com/contact.html?intent=integration&utm_source=github&utm_medium=organic_repository&utm_campaign=unitree-go2-sdk-ros2-project-brief-zh-20260724&utm_content=contact"
+  },
+  "privacy_note": "不要在公开 Issue 中填写手机号、邮箱、客户名称、账号凭据、保密图纸或精确的非公开场地信息。"
+}
