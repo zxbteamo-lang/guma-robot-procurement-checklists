@@ -1,0 +1,135 @@
+name: Robot data-collection project brief
+description: Scope an embodied-AI data pilot around accepted, replayable and traceable episodes without posting private data.
+title: "[Robot data brief] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this public form to describe one representative robot data-collection pilot before requesting a written scope, acceptance plan or quotation.
+
+        Do not post personal phone numbers, email addresses, exact private site addresses, faces, confidential images, credentials, customer names, unpublished datasets, private schema documents or commercial terms. Send private materials through the [GUMA private project contact form](https://www.lllrobots.com/en/contact.html?intent=data-collection&utm_source=github&utm_medium=organic_issue_form&utm_campaign=robot-data-collection-project-brief-20260724).
+
+        A submitted brief is a scoping request. It is not proof that a robot, sensor, teleoperation method, dataset format, privacy regime, delivery volume, model result, price or schedule has been accepted.
+
+  - type: textarea
+    id: intended_use
+    attributes:
+      label: Intended policy, model or evaluation use / 数据用途
+      description: Describe the decision the dataset must support and the generalization claim it will be used to test.
+      placeholder: "Example: train and evaluate a manipulation policy that transfers across unseen object instances and two controlled scene layouts."
+    validations:
+      required: true
+
+  - type: textarea
+    id: robot_sensor_stack
+    attributes:
+      label: Robot, sensors and collection stack / 机器人与采集栈
+      description: List exact robot and hardware versions, sensors, controller, firmware, SDK, teleoperation or autonomy method and collection software. If undecided, state the required task and constraints.
+      placeholder: "Robot / edition / controller / sensors / firmware / SDK / teleoperation device / collection software"
+    validations:
+      required: true
+
+  - type: textarea
+    id: task_taxonomy
+    attributes:
+      label: Task taxonomy and observable success / 任务分类与成功标准
+      description: Define task families, variants, start conditions, observable success, failure, intervention and end semantics.
+      placeholder: "Task family / variant / start state / success / failure / timeout / reset rule"
+    validations:
+      required: true
+
+  - type: textarea
+    id: scene_coverage
+    attributes:
+      label: Scene, object and operator coverage / 场景覆盖
+      description: Describe objects, layouts, lighting, clutter, occlusion, operator or session variation and the target distribution. Do not post private site images.
+      placeholder: "Coverage factors, required cells, sparse cases and prohibited conditions"
+    validations:
+      required: true
+
+  - type: textarea
+    id: streams_actions
+    attributes:
+      label: Observation streams and action contract / 数据流与动作定义
+      description: List required streams, frequency, clock source, action semantics, units, coordinate frames and whether commanded, applied and measured states must be separated.
+      placeholder: "RGB/depth/joints/force/action; Hz; timestamp source; units; frame; command versus observed state"
+    validations:
+      required: true
+
+  - type: textarea
+    id: sync_calibration
+    attributes:
+      label: Synchronization, calibration and replay evidence / 同步标定与回放
+      description: State acceptable clock skew or drift, calibration versioning, dropped-sample handling and the clean-environment replay test.
+      placeholder: "Timing tolerance / calibration IDs / missing-frame rule / representative replay evidence"
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: acceptance_priorities
+    attributes:
+      label: Acceptance gates the pilot must exercise / 必测验收门
+      description: Select every gate that needs machine-readable evidence and an explicit rejection reason.
+      options:
+        - label: Episode-boundary, reset and interrupted-attempt handling
+        - label: Failure, retry, recovery and human-intervention retention
+        - label: Automated schema, timing, range, corruption and completeness checks
+        - label: Sampled human review of both accepted and rejected episodes
+        - label: Provenance, immutable release, checksum and transformation history
+        - label: Train, validation and test split leakage checks
+        - label: Resumable export, clean-machine load and episode replay
+        - label: Consent, privacy, retention, access, redaction and deletion test
+
+  - type: dropdown
+    id: pilot_scale
+    attributes:
+      label: Initial pilot scale / 首期试点规模
+      options:
+        - Fewer than 100 accepted episodes
+        - 100 to 1,000 accepted episodes
+        - 1,001 to 10,000 accepted episodes
+        - More than 10,000 accepted episodes
+        - Not yet decided; acceptance design first
+    validations:
+      required: true
+
+  - type: input
+    id: target_format
+    attributes:
+      label: Target delivery format and version / 交付格式
+      description: Name the required schema, dataset format or consumer when known.
+      placeholder: "LeRobotDataset v3 / RLDS / custom Parquet plus video / undecided"
+    validations:
+      required: true
+
+  - type: input
+    id: target_window
+    attributes:
+      label: Target decision or pilot window / 目标时间
+      description: Give a month, quarter or purchasing window.
+      placeholder: "2026 Q4"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: purchasing_stage
+    attributes:
+      label: Purchasing stage / 采购阶段
+      options:
+        - Initial requirements research
+        - Comparing collection suppliers or platforms
+        - Preparing an RFP or representative pilot
+        - Budget or purchasing approval
+        - Ready for a written scope and quotation
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: public_data_confirmation
+    attributes:
+      label: Public-data and evidence boundary / 公开信息与证据边界
+      options:
+        - label: I have not included personal contact details, private site data, faces, credentials, customer names, confidential datasets or unpublished commercial information.
+          required: true
+        - label: I understand that compatibility, privacy compliance, accepted volume, model results, price and delivery require current evidence, a representative pilot and a written agreement.
+          required: true
