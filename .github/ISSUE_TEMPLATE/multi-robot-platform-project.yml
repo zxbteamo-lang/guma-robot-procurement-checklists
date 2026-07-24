@@ -1,0 +1,125 @@
+name: Multi-robot platform project brief
+description: Scope a GUMA Robot Studio or mixed-fleet management pilot without posting private project data.
+title: "[Multi-robot platform brief] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this public form to describe one representative multi-robot task before requesting a pilot, integration scope or quotation.
+
+        Do not post personal phone numbers, email addresses, exact private site addresses, confidential maps, credentials, customer names, unpublished prices or safety-sensitive details. Send private documents through the [GUMA private project contact form](https://www.lllrobots.com/contact.html?intent=studio&utm_source=github&utm_medium=organic_issue_form&utm_campaign=multi-robot-platform-project-brief-20260724).
+
+        A submitted brief is a scoping request. It is not proof of compatibility, interoperability, certification, price, delivery time, safety suitability, concurrent capacity or project acceptance.
+
+  - type: textarea
+    id: project_goal
+    attributes:
+      label: Project goal / 项目目标
+      description: Describe the operating result the buyer needs, not a list of software features.
+      placeholder: "Example: dispatch inspection and delivery robots through one reviewed task lifecycle while preserving each vendor's safety boundary."
+    validations:
+      required: true
+
+  - type: textarea
+    id: robots_versions
+    attributes:
+      label: Robots, versions and current control systems / 机器人与版本
+      description: List exact robot models, hardware revisions, firmware, SDK or ROS versions, existing fleet managers and required payloads. If unknown, state the required task instead of guessing a model.
+      placeholder: "Model / edition / firmware / SDK or ROS / payload / current controller"
+    validations:
+      required: true
+
+  - type: textarea
+    id: site_shared_resources
+    attributes:
+      label: Site and shared resources / 场地与共享资源
+      description: Use only a city or country. Describe floors, doors, lifts, corridors, chargers, network zones and human or vehicle traffic without posting private drawings or an exact address.
+      placeholder: "Shanghai; two floors; one shared lift; three charging areas; two offline zones; mixed pedestrian traffic."
+    validations:
+      required: true
+
+  - type: textarea
+    id: representative_task
+    attributes:
+      label: One representative task and acceptance evidence / 代表性任务与验收证据
+      description: State the trigger, robot selection, route or work, observable success, failure conditions, retained evidence and reviewer.
+      placeholder: "A ticket creates a task; the platform selects an eligible robot; the robot completes the approved route; every state transition, intervention and result can be replayed."
+    validations:
+      required: true
+
+  - type: textarea
+    id: maps_tasks
+    attributes:
+      label: Map and task lifecycle / 地图与任务生命周期
+      description: Describe map ownership, versions, zones, waypoints, task states, approvals, rollback and how vendor-specific maps or task semantics are handled.
+      placeholder: "Who creates, approves, edits and rolls back maps and tasks? Which states and identifiers must remain traceable?"
+    validations:
+      required: true
+
+  - type: textarea
+    id: business_systems
+    attributes:
+      label: Business systems and interface boundary / 业务系统与接口边界
+      description: List WMS, MES, EAM, CMMS, ticketing, identity, alarm or reporting systems and the required read/write boundary. Do not post credentials or private API documents.
+      placeholder: "System / required event or action / authentication boundary / on-premises or cloud"
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: failure_priorities
+    attributes:
+      label: Failure cases the pilot must test / 必测失败场景
+      description: Select every case that must have a defined detection, safe state, retained log and recovery path.
+      options:
+        - label: Network loss or delayed messages
+        - label: Localization loss, blocked route or map-version mismatch
+        - label: Low battery, charging failure or unavailable charger
+        - label: Robot adapter or platform service restart during a task
+        - label: Business-system outage, duplicate command or invalid task
+        - label: Manual pause, emergency stop, takeover and controlled resume
+
+  - type: dropdown
+    id: pilot_scale
+    attributes:
+      label: Pilot scale / 试点规模
+      options:
+        - One robot and one representative task
+        - Two to five robots of one model
+        - Two to five robots across multiple models or vendors
+        - Six to twenty robots
+        - More than twenty robots
+        - Not yet decided
+    validations:
+      required: true
+
+  - type: input
+    id: target_date
+    attributes:
+      label: Target decision or operating window / 目标时间
+      description: Give a month, quarter or purchasing window.
+      placeholder: "2026 Q4"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: purchasing_stage
+    attributes:
+      label: Purchasing stage / 采购阶段
+      options:
+        - Initial requirements research
+        - Comparing platforms or integrators
+        - Preparing an RFP or proof of concept
+        - Budget or purchasing approval
+        - Ready for a written scope and quotation
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: public_data_confirmation
+    attributes:
+      label: Public-data and evidence boundary / 公开信息与证据边界
+      options:
+        - label: I have not included personal contact details, credentials, confidential maps, exact private addresses, customer names or unpublished commercial information.
+          required: true
+        - label: I understand that exact compatibility, capacity, certification, price, delivery and performance require current primary evidence, representative testing and a written agreement.
+          required: true
