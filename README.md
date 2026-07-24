@@ -32,6 +32,7 @@ These checklists are released under CC0-1.0 so buyers, integrators and researche
 - [机器可读中文 Go2 项目需求简报](data/unitree_go2_sdk_ros2_project_brief_zh.json) — 与中文采购清单对应的结构化问题、证据和验收单位。
 - [多机器人管理平台中文 RFP 与 15 项验收](MULTI_ROBOT_PLATFORM_RFP_ZH.md) — 机器人身份、适配器、地图、任务、权限、失败恢复和企业接口的采购矩阵。
 - [机器可读多机器人平台验收矩阵](data/multi_robot_platform_rfp_zh.json) — 15 项结构化测试、失败注入、证据与交付物。
+- [Open a multi-robot platform project brief](https://github.com/zxbteamo-lang/guma-robot-procurement-checklists/issues/new?template=multi-robot-platform-project.yml) — submit robot versions, shared resources, one representative task, map and task lifecycle, business-system interfaces, failure tests, pilot scale and purchasing stage.
 - [Open a structured robot project brief](https://github.com/zxbteamo-lang/guma-robot-procurement-checklists/issues/new?template=robot-project-brief.yml) — describe the operating scenario, representative task, robot or payload, acceptance tests, location, scale and decision window.
 
 Do not post personal contact information, credentials, confidential site drawings, customer names or unpublished commercial details in a public GitHub issue. Use the private [GUMA project contact form](https://www.lllrobots.com/en/contact.html?intent=integration&utm_source=github&utm_medium=organic_repository&utm_campaign=robot-procurement-checklists-20260724&utm_term=project-brief-private-documents) for private documents.
