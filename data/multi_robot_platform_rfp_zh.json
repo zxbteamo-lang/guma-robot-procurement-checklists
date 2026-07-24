@@ -1,0 +1,399 @@
+{
+  "schema_version": "1.0",
+  "updated_at": "2026-07-24",
+  "language": "zh-CN",
+  "subject": "多机器人管理平台 RFP 与验收矩阵",
+  "intended_use": [
+    "混合机器人平台采购需求澄清",
+    "供应商投标范围比较",
+    "单机到多机 PoC 验收规划",
+    "企业系统集成和运维交接"
+  ],
+  "not_evidence_of": [
+    "特定机器人或适配器已经兼容",
+    "已完成客户部署",
+    "导航或安全认证",
+    "并发规模或性能保证",
+    "价格、交期、投资回报或商业结果"
+  ],
+  "responsibility_layers": [
+    {
+      "id": "robot_vendor_layer",
+      "owns": [
+        "底层运动",
+        "导航",
+        "保护行为",
+        "设备健康",
+        "型号特有限制"
+      ]
+    },
+    {
+      "id": "fleet_orchestration_layer",
+      "owns": [
+        "任务分配",
+        "共享资源协调",
+        "跨机器人状态",
+        "运营策略"
+      ]
+    },
+    {
+      "id": "business_operations_layer",
+      "owns": [
+        "订单与工单",
+        "巡检计划",
+        "账号与权限",
+        "证据与报表",
+        "服务流程"
+      ]
+    }
+  ],
+  "official_references": [
+    {
+      "name": "Open-RMF",
+      "url": "https://github.com/open-rmf/rmf",
+      "use": "多机器人队列管理、任务分配、共享空间与基础设施协调的公开参考",
+      "boundary": "不证明某个机器人、适配器、场地或 GUMA 版本已经兼容"
+    },
+    {
+      "name": "MassRobotics AMR Interoperability Standard",
+      "url": "https://www.massrobotics.org/what-is-the-massrobotics-amr-interoperability-standard/",
+      "use": "跨厂商位置、状态和基础能力信息共享参考",
+      "boundary": "不是任务管理、导航或安全系统"
+    },
+    {
+      "name": "GUMA Robot Studio",
+      "url": "https://www.lllrobots.com/studio.html",
+      "use": "公开产品结构、地图任务流程、权限日志和操作演示",
+      "boundary": "公开页面和隔离模拟体验不证明具体机器人已真实接入或完成客户验收"
+    }
+  ],
+  "acceptance_tests": [
+    {
+      "id": "exact_identity",
+      "title": "机器人与软件身份",
+      "buyer_inputs": [
+        "机器人型号和硬件版本",
+        "控制器和固件",
+        "导航栈和原厂管理软件",
+        "SDK、适配器和平台版本"
+      ],
+      "failure_tests": [
+        "相同产品家族但接口版本不一致",
+        "未支持版本被错误注册"
+      ],
+      "required_evidence": [
+        "机器可读设备清单",
+        "支持版本矩阵"
+      ],
+      "acceptance_unit": "一套准确且内部一致的版本基线"
+    },
+    {
+      "id": "capability_contract",
+      "title": "能力契约",
+      "buyer_inputs": [
+        "可观察状态",
+        "可请求任务",
+        "远程辅助能力",
+        "直接控制能力"
+      ],
+      "failure_tests": [
+        "模拟能力被标为真实支持",
+        "现场受限能力没有阻断"
+      ],
+      "required_evidence": [
+        "支持、不支持、模拟和现场受限能力矩阵",
+        "准确接口名称与限制"
+      ],
+      "acceptance_unit": "每种机器人一份经过批准的能力矩阵"
+    },
+    {
+      "id": "adapter_contract",
+      "title": "适配器行为",
+      "buyer_inputs": [
+        "原厂 API 或 ROS 接口",
+        "时间戳、单位和坐标系",
+        "限速、超时和重试",
+        "幂等与错误映射"
+      ],
+      "failure_tests": [
+        "延迟或重复命令",
+        "未知错误码",
+        "适配器重启"
+      ],
+      "required_evidence": [
+        "接口 schema",
+        "测试夹具",
+        "错误映射样例"
+      ],
+      "acceptance_unit": "稳定、可测试且版本化的适配器契约"
+    },
+    {
+      "id": "map_ownership",
+      "title": "地图与坐标所有权",
+      "buyer_inputs": [
+        "地图和楼层",
+        "区域和点位",
+        "充电点、门与电梯",
+        "禁行区和坐标变换"
+      ],
+      "failure_tests": [
+        "地图版本不一致",
+        "坐标变换缺失",
+        "回滚后任务引用失效"
+      ],
+      "required_evidence": [
+        "版本化场地模型",
+        "审批记录",
+        "回滚测试"
+      ],
+      "acceptance_unit": "可审批、追踪和回滚的场地资产"
+    },
+    {
+      "id": "task_lifecycle",
+      "title": "完整任务生命周期",
+      "buyer_inputs": [
+        "接收、分配和执行",
+        "暂停、阻塞和失败",
+        "取消、恢复、人工完成和过期"
+      ],
+      "failure_tests": [
+        "状态跳转缺失原因",
+        "失败任务被错误标为完成"
+      ],
+      "required_evidence": [
+        "正常和异常状态转换日志"
+      ],
+      "acceptance_unit": "每次状态变化都有时间、原因和责任方"
+    },
+    {
+      "id": "cross_fleet_allocation",
+      "title": "跨机器人任务分配",
+      "buyer_inputs": [
+        "能力",
+        "位置与电量",
+        "负载与权限",
+        "维护状态与优先级"
+      ],
+      "failure_tests": [
+        "不具备能力的机器人收到任务",
+        "相同任务被重复分配"
+      ],
+      "required_evidence": [
+        "可重复分配案例",
+        "完整决策输入"
+      ],
+      "acceptance_unit": "可解释且可重复的分配结果"
+    },
+    {
+      "id": "shared_resources",
+      "title": "共享资源协调",
+      "buyer_inputs": [
+        "窄通道和交叉口",
+        "门、电梯和工位",
+        "充电区和人工作业区"
+      ],
+      "failure_tests": [
+        "资源冲突",
+        "等待超时",
+        "占用方失联"
+      ],
+      "required_evidence": [
+        "冲突案例",
+        "等待规则",
+        "超时与恢复日志"
+      ],
+      "acceptance_unit": "每类共享资源至少一条成功和失败记录"
+    },
+    {
+      "id": "battery_charging",
+      "title": "电量与充电策略",
+      "buyer_inputs": [
+        "预留电量",
+        "充电器兼容性",
+        "充电排队",
+        "任务中断与恢复"
+      ],
+      "failure_tests": [
+        "首选充电位被占用",
+        "充电失败",
+        "电量不足仍接受任务"
+      ],
+      "required_evidence": [
+        "完整低电量运行和恢复日志"
+      ],
+      "acceptance_unit": "一次可复核的低电量闭环"
+    },
+    {
+      "id": "network_degradation",
+      "title": "网络退化",
+      "buyer_inputs": [
+        "延迟",
+        "丢包",
+        "断网",
+        "重连"
+      ],
+      "failure_tests": [
+        "通信恢复后重复执行任务",
+        "离线期间机器人没有进入约定状态"
+      ],
+      "required_evidence": [
+        "安全状态",
+        "有界重试",
+        "重建时间线"
+      ],
+      "acceptance_unit": "无重复执行且时间线可重建的网络失败记录"
+    },
+    {
+      "id": "service_restart",
+      "title": "适配器与服务重启",
+      "buyer_inputs": [
+        "机器人适配器",
+        "任务服务",
+        "数据库",
+        "消息中间件",
+        "前端"
+      ],
+      "failure_tests": [
+        "任务所有权丢失",
+        "产生第二次执行",
+        "状态无法对账"
+      ],
+      "required_evidence": [
+        "重启矩阵",
+        "持久状态",
+        "对账结果",
+        "操作员告警"
+      ],
+      "acceptance_unit": "每个组件独立重启后的可恢复状态"
+    },
+    {
+      "id": "manual_takeover",
+      "title": "人工接管",
+      "buyer_inputs": [
+        "暂停",
+        "遥控",
+        "释放",
+        "恢复",
+        "取消"
+      ],
+      "failure_tests": [
+        "未授权人员接管",
+        "接管后任务状态不明",
+        "失败证据被覆盖"
+      ],
+      "required_evidence": [
+        "角色校验",
+        "命令审计",
+        "任务交还规则"
+      ],
+      "acceptance_unit": "一次可追溯的人工接管与交还"
+    },
+    {
+      "id": "permissions_audit",
+      "title": "权限与审计",
+      "buyer_inputs": [
+        "操作员",
+        "工程师",
+        "管理员",
+        "服务商",
+        "审计员"
+      ],
+      "failure_tests": [
+        "越权地图发布",
+        "越权远程移动",
+        "审计事件缺失"
+      ],
+      "required_evidence": [
+        "权限矩阵",
+        "高风险操作审计事件"
+      ],
+      "acceptance_unit": "每个角色的允许和拒绝测试均有记录"
+    },
+    {
+      "id": "logs_replay",
+      "title": "日志、回放与工作证据",
+      "buyer_inputs": [
+        "机器人和适配器版本",
+        "地图和任务版本",
+        "平台和业务系统版本",
+        "错误与人工干预"
+      ],
+      "failure_tests": [
+        "无法关联跨系统事件",
+        "只能依赖操作员口述"
+      ],
+      "required_evidence": [
+        "原始记录",
+        "统一追踪编号",
+        "失败任务回放"
+      ],
+      "acceptance_unit": "从原始记录完整解释一次失败"
+    },
+    {
+      "id": "enterprise_integration",
+      "title": "企业系统集成",
+      "buyer_inputs": [
+        "WMS、MES 或 EAM",
+        "工单与巡检系统",
+        "身份系统",
+        "客户应用"
+      ],
+      "failure_tests": [
+        "重复消息",
+        "下游不可用",
+        "延迟确认",
+        "对账不一致"
+      ],
+      "required_evidence": [
+        "API 契约",
+        "重试规则",
+        "死信处理",
+        "端到端追踪编号"
+      ],
+      "acceptance_unit": "一条正常和一条异常端到端业务流程"
+    },
+    {
+      "id": "upgrade_rollback",
+      "title": "升级与回滚",
+      "buyer_inputs": [
+        "灰度范围",
+        "兼容窗口",
+        "阻断条件",
+        "回滚步骤"
+      ],
+      "failure_tests": [
+        "不兼容版本进入全量",
+        "回滚损坏地图或任务记录"
+      ],
+      "required_evidence": [
+        "灰度升级记录",
+        "不兼容版本阻断",
+        "验证回滚"
+      ],
+      "acceptance_unit": "一次不丢失运营记录的升级和回滚"
+    }
+  ],
+  "pilot_sequence": [
+    "单机器人、单场地、一个代表性任务",
+    "网络、定位、路线、低电量、服务重启和人工接管失败注入",
+    "第二种机器人或第二家厂商",
+    "共享资源、权限、报表和企业系统集成"
+  ],
+  "handover_deliverables": [
+    "支持版本矩阵",
+    "架构与责任边界",
+    "适配器与业务 API 契约",
+    "版本化地图与任务资产",
+    "角色与权限矩阵",
+    "部署、升级和回滚步骤",
+    "验收脚本与失败案例",
+    "日志、回放说明和已知限制",
+    "培训、运维和恢复手册"
+  ],
+  "owned_resources": {
+    "platform_overview": "https://www.lllrobots.com/studio.html?utm_source=github&utm_medium=organic_repository&utm_campaign=multi-robot-platform-rfp-zh-github-20260724&utm_content=platform",
+    "private_project_brief": "https://www.lllrobots.com/contact.html?intent=studio&utm_source=github&utm_medium=organic_repository&utm_campaign=multi-robot-platform-rfp-zh-github-20260724&utm_content=contact"
+  },
+  "evidence_boundary": "公开标准、开源框架、GUMA产品页和隔离模拟体验均不能证明某个具体机器人、适配器、场地、并发规模或业务系统已经兼容或完成验收。项目事实必须由准确版本、现场测试和书面范围证明。",
+  "privacy_note": "不要在公开 Issue 中填写手机号、邮箱、客户名称、账号凭据、保密场地图或精确的非公开场地信息。"
+}
