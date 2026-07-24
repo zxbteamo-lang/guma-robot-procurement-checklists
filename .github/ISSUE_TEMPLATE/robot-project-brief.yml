@@ -1,0 +1,115 @@
+name: Robot project brief
+description: Scope an industrial inspection, robot data-collection, or multi-robot platform project.
+title: "[Project brief] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form to describe a representative robot task before requesting a proposal or pilot.
+
+        Do not include confidential site drawings, personal phone numbers, email addresses, access credentials, customer names, safety-sensitive details, or unpublished commercial information in a public issue. For private documents, use the [GUMA project contact form](https://www.lllrobots.com/en/contact.html?intent=integration&utm_source=github&utm_medium=organic_issue_form&utm_campaign=robot-project-brief-20260724).
+
+        A submitted brief is a request for scoping, not proof of compatibility, certification, price, delivery time, safety suitability or project acceptance.
+
+  - type: dropdown
+    id: project_type
+    attributes:
+      label: Project type
+      description: Choose the closest buying decision.
+      options:
+        - Industrial inspection robot pilot
+        - Embodied-AI robot data collection
+        - Multi-robot management platform
+        - Robot purchase or rental
+        - Custom robot development and systems integration
+        - Other or not yet decided
+    validations:
+      required: true
+
+  - type: textarea
+    id: scenario
+    attributes:
+      label: Operating scenario
+      description: Describe the environment, people or traffic, surfaces, weather or indoor conditions, network and power boundary.
+      placeholder: "Example: mixed indoor/outdoor utility site; ramps, thresholds and narrow passages; private LAN with two offline zones."
+    validations:
+      required: true
+
+  - type: textarea
+    id: representative_task
+    attributes:
+      label: Representative task and success condition
+      description: State one task, its observable success condition and the evidence that a reviewer must receive.
+      placeholder: "Example: complete the approved route, collect thermal and visible evidence at 20 checkpoints, and retain every intervention and failure."
+    validations:
+      required: true
+
+  - type: textarea
+    id: robot_payload
+    attributes:
+      label: Robot, payload and software boundary
+      description: List exact models or preferred robot type, sensors, payload mass and power, SDK or ROS requirements, and systems to integrate.
+      placeholder: "If the model is not selected, write the required payload and task instead of guessing a product."
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance_failures
+    attributes:
+      label: Acceptance and failure tests
+      description: List the denominator, required evidence, planned failures and safe state.
+      placeholder: "Examples: blocked route, network loss, low battery, localization loss, restart, missing sensor sample, duplicate task prevention."
+    validations:
+      required: true
+
+  - type: input
+    id: location
+    attributes:
+      label: Operating city or country
+      description: A city or country is enough; do not post an exact private site address.
+      placeholder: "Shanghai, China"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: quantity
+    attributes:
+      label: Expected quantity or pilot scale
+      options:
+        - One robot or one representative pilot
+        - Two to five robots
+        - Six to twenty robots
+        - More than twenty robots
+        - Not yet decided
+    validations:
+      required: true
+
+  - type: input
+    id: target_date
+    attributes:
+      label: Target decision or operating date
+      description: Give a month, quarter or decision window.
+      placeholder: "2026 Q4"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: purchasing_stage
+    attributes:
+      label: Purchasing stage
+      options:
+        - Initial requirements research
+        - Comparing products or suppliers
+        - Preparing a pilot or proof of concept
+        - Budget or purchasing approval
+        - Ready for a written scope and quotation
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: Evidence boundary
+      options:
+        - label: I understand that final compatibility, certification, delivery, price and performance require the exact current configuration, representative testing and a written agreement.
+          required: true
