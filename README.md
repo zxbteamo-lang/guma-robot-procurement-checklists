@@ -4,7 +4,8 @@ Buyer-side templates for scoping and accepting:
 
 1. an industrial inspection robot pilot;
 2. an embodied-AI robot data-collection project;
-3. a multi-robot management platform.
+3. a multi-robot management platform;
+4. a Unitree Go2 SDK, ROS 2 or mapping project.
 
 These checklists are released under CC0-1.0 so buyers, integrators and researchers can reuse and adapt them.
 
@@ -17,11 +18,14 @@ These checklists are released under CC0-1.0 so buyers, integrators and researche
 | A robot must travel a route and collect inspection evidence | [Industrial inspection robot pilot](#1-industrial-inspection-robot-pilot) | A representative route completed with reviewable evidence and tested failure recovery |
 | A project must produce training or evaluation data | [Embodied-AI data collection](#2-embodied-ai-data-collection) | An accepted, replayable and traceable episode—not a recording hour |
 | One platform must manage robots, maps, tasks and users | [Multi-robot management platform](#3-multi-robot-management-platform) | A versioned task lifecycle with permissions, audit evidence and recovery |
+| A Go2 project needs SDK, ROS 2, payload or mapping integration | [Go2 SDK, ROS 2 and mapping buyer checklist](GO2_SDK_ROS2_BUYER_CHECKLIST.md) | One written configuration baseline, reproducible software environment and evidence-backed PoC |
 
 ## Machine-readable data and project intake
 
 - [Robot procurement acceptance records](data/robot_procurement_acceptance_checks.jsonl) — three CC0 JSONL records with buyer inputs, failure tests, required evidence and explicit claim boundaries.
 - [Dataset Card](DATASET_CARD.md) — schema, intended use, quality rules, limitations and attributed implementation links.
+- [Go2 SDK, ROS 2 and mapping buyer checklist](GO2_SDK_ROS2_BUYER_CHECKLIST.md) — ten configuration, interface, payload, failure-recovery and acceptance decisions.
+- [Machine-readable Go2 project brief](data/unitree_go2_sdk_ros2_project_brief.json) — ten structured buyer questions with required inputs, evidence, failure tests and acceptance units.
 - [Open a structured robot project brief](https://github.com/zxbteamo-lang/guma-robot-procurement-checklists/issues/new?template=robot-project-brief.yml) — describe the operating scenario, representative task, robot or payload, acceptance tests, location, scale and decision window.
 
 Do not post personal contact information, credentials, confidential site drawings, customer names or unpublished commercial details in a public GitHub issue. Use the private [GUMA project contact form](https://www.lllrobots.com/en/contact.html?intent=integration&utm_source=github&utm_medium=organic_repository&utm_campaign=robot-procurement-checklists-20260724&utm_term=project-brief-private-documents) for private documents.
