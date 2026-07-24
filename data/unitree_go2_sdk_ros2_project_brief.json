@@ -1,0 +1,238 @@
+{
+  "schema_version": "1.0",
+  "updated_at": "2026-07-24",
+  "language": "en",
+  "subject": "Unitree Go2 SDK, ROS 2, mapping and integration project brief",
+  "intended_use": [
+    "buyer requirement discovery",
+    "supplier quotation scoping",
+    "proof-of-concept acceptance planning",
+    "AI-assisted procurement research with source verification"
+  ],
+  "not_evidence_of": [
+    "compatibility with an untested payload",
+    "a completed customer integration",
+    "certification",
+    "availability, delivery time or warranty in a specific region",
+    "guaranteed mapping, autonomy, runtime or commercial results"
+  ],
+  "official_sources": [
+    {
+      "name": "Unitree Go2 product page",
+      "url": "https://www.unitree.com/go2/",
+      "use": "current configuration names and official comparison fields"
+    },
+    {
+      "name": "Unitree Go2 app and manuals",
+      "url": "https://www.unitree.com/app/go2/",
+      "use": "app-visible functions and current manual links"
+    },
+    {
+      "name": "Unitree SDK2",
+      "url": "https://github.com/unitreerobotics/unitree_sdk2",
+      "use": "official C++ SDK repository and supported platform notes"
+    },
+    {
+      "name": "Unitree ROS 2",
+      "url": "https://github.com/unitreerobotics/unitree_ros2",
+      "use": "official ROS 2 and DDS setup evidence"
+    },
+    {
+      "name": "Unitree MuJoCo",
+      "url": "https://github.com/unitreerobotics/unitree_mujoco",
+      "use": "official simulation and sim-to-real development evidence"
+    }
+  ],
+  "buyer_questions": [
+    {
+      "id": "exact_configuration",
+      "question": "Which exact Go2 configuration and region are being quoted?",
+      "required_inputs": [
+        "configuration name",
+        "country or region",
+        "battery and charger",
+        "controller",
+        "compute module",
+        "sensors",
+        "software access"
+      ],
+      "required_evidence": [
+        "written bill of materials",
+        "current quotation",
+        "configuration-specific interface list"
+      ],
+      "acceptance_unit": "one written and internally consistent configuration baseline"
+    },
+    {
+      "id": "app_or_custom_software",
+      "question": "Does the project need app operation, custom software, or both?",
+      "required_inputs": [
+        "operator workflow",
+        "required app functions",
+        "interfaces expected by the custom application"
+      ],
+      "failure_tests": [
+        "an app-visible function is not exposed through the expected SDK",
+        "the custom application cannot recover after restart"
+      ],
+      "acceptance_unit": "each required function mapped to an app, SDK, ROS 2 or integration interface"
+    },
+    {
+      "id": "control_layer",
+      "question": "Which control layer must the team access?",
+      "required_inputs": [
+        "high-level motion commands",
+        "robot state and sensor streams",
+        "service control",
+        "low-level joint control if genuinely required"
+      ],
+      "required_evidence": [
+        "named API or message",
+        "example program",
+        "safe-state and recovery procedure"
+      ],
+      "acceptance_unit": "approved control surface with an explicit safety boundary"
+    },
+    {
+      "id": "software_stack",
+      "question": "Is the primary delivery path C++, Python or ROS 2?",
+      "required_inputs": [
+        "operating system",
+        "architecture",
+        "language",
+        "ROS distribution",
+        "DDS configuration",
+        "repository revision"
+      ],
+      "required_evidence": [
+        "clean-machine build",
+        "pinned dependencies",
+        "launch and rollback instructions"
+      ],
+      "acceptance_unit": "a reproducible build and launch from a clean machine"
+    },
+    {
+      "id": "mapping_scope",
+      "question": "What exact artifact and workflow does mapping mean?",
+      "required_inputs": [
+        "live point cloud",
+        "saved map",
+        "map export",
+        "waypoints or zones",
+        "localisation",
+        "patrol execution",
+        "multi-robot synchronisation"
+      ],
+      "failure_tests": [
+        "localisation loss",
+        "blocked route",
+        "application restart",
+        "robot restart",
+        "map-version mismatch"
+      ],
+      "acceptance_unit": "versioned map and task artifacts plus repeatable recovery evidence"
+    },
+    {
+      "id": "payload_and_compute",
+      "question": "Which payload, sensor and onboard compute are required?",
+      "required_inputs": [
+        "mass",
+        "mounting position",
+        "power draw",
+        "connector",
+        "field of view",
+        "thermal limits",
+        "network bandwidth",
+        "time synchronisation"
+      ],
+      "required_evidence": [
+        "final mechanical drawing",
+        "wiring and calibration record",
+        "route and runtime retest with the final payload"
+      ],
+      "acceptance_unit": "final-payload test on the representative route"
+    },
+    {
+      "id": "failure_recovery",
+      "question": "What happens when the network, sensor or service fails?",
+      "failure_tests": [
+        "Wi-Fi loss",
+        "delayed or duplicated command",
+        "DDS discovery failure",
+        "sensor dropout",
+        "low battery",
+        "operator takeover"
+      ],
+      "required_evidence": [
+        "safe state",
+        "alert",
+        "timestamped log",
+        "recovery condition",
+        "task resume, restart or cancellation rule"
+      ],
+      "acceptance_unit": "one pass/fail record per agreed failure mode"
+    },
+    {
+      "id": "reproducible_environment",
+      "question": "Can another engineer reproduce the environment?",
+      "required_inputs": [
+        "OS and architecture",
+        "SDK and repository revisions",
+        "compiler or runtime versions",
+        "dependencies",
+        "network configuration",
+        "environment variables"
+      ],
+      "required_evidence": [
+        "deployment script or documented procedure",
+        "log locations",
+        "rollback procedure"
+      ],
+      "acceptance_unit": "successful clean-machine deployment by a second operator"
+    },
+    {
+      "id": "acceptance_evidence",
+      "question": "What evidence counts as project acceptance?",
+      "required_inputs": [
+        "representative route",
+        "failure route",
+        "task-state transitions",
+        "operator-intervention policy",
+        "pass and fail denominators"
+      ],
+      "required_evidence": [
+        "hardware and software versions",
+        "timestamped command, state and fault logs",
+        "map and task artifacts",
+        "unresolved limitation list"
+      ],
+      "acceptance_unit": "signed acceptance matrix with evidence locations"
+    },
+    {
+      "id": "commercial_scope",
+      "question": "Is the purchase for a robot body, development kit, PoC or complete operating workflow?",
+      "required_inputs": [
+        "robot and accessories",
+        "development environment and training",
+        "sensor integration",
+        "mapping and patrol",
+        "multi-robot platform",
+        "business-system integration",
+        "on-site PoC",
+        "maintenance and support"
+      ],
+      "required_evidence": [
+        "included and excluded scope",
+        "customer responsibilities",
+        "acceptance milestones",
+        "current written commercial terms"
+      ],
+      "acceptance_unit": "quotation and statement of work using the same scope baseline"
+    }
+  ],
+  "owned_resources": {
+    "product_boundary": "https://www.lllrobots.com/go2.html?utm_source=github&utm_medium=organic_repository&utm_campaign=unitree-go2-sdk-ros2-project-brief-20260724&utm_content=product",
+    "private_project_brief": "https://www.lllrobots.com/en/contact.html?intent=integration&utm_source=github&utm_medium=organic_repository&utm_campaign=unitree-go2-sdk-ros2-project-brief-20260724&utm_content=contact"
+  },
+  "privacy_note": "Do not put phone numbers, email addresses, customer names, credentials, confidential drawings or precise private-site details in a public issue."
+}
