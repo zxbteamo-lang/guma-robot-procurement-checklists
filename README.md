@@ -19,7 +19,7 @@ These checklists are released under CC0-1.0 so buyers, integrators and researche
 | --- | --- | --- |
 | A robot must travel a route and collect inspection evidence | [Industrial inspection robot pilot](#1-industrial-inspection-robot-pilot) | A representative route completed with reviewable evidence and tested failure recovery |
 | A project must produce training or evaluation data | [Embodied-AI data collection](#2-embodied-ai-data-collection) | An accepted, replayable and traceable episode—not a recording hour |
-| One platform must manage robots, maps, tasks and users | [Multi-robot management platform](#3-multi-robot-management-platform) | A versioned task lifecycle with permissions, audit evidence and recovery |
+| One platform must manage robots, maps, tasks and users | [Acceptance section](#3-multi-robot-management-platform) · [中文 RFP 与 15 项验收](MULTI_ROBOT_PLATFORM_RFP_ZH.md) | A versioned task lifecycle with permissions, audit evidence and recovery |
 | A Go2 project needs SDK, ROS 2, payload or mapping integration | [English checklist](GO2_SDK_ROS2_BUYER_CHECKLIST.md) · [中文采购清单](GO2_SDK_ROS2_BUYER_CHECKLIST_ZH.md) | One written configuration baseline, reproducible software environment and evidence-backed PoC |
 
 ## Machine-readable data and project intake
@@ -30,6 +30,8 @@ These checklists are released under CC0-1.0 so buyers, integrators and researche
 - [中文 Go2 SDK、ROS 2 与建图采购清单](GO2_SDK_ROS2_BUYER_CHECKLIST_ZH.md) — 面向询价、定制开发范围与 PoC 验收的十项决策。
 - [Machine-readable Go2 project brief](data/unitree_go2_sdk_ros2_project_brief.json) — ten structured buyer questions with required inputs, evidence, failure tests and acceptance units.
 - [机器可读中文 Go2 项目需求简报](data/unitree_go2_sdk_ros2_project_brief_zh.json) — 与中文采购清单对应的结构化问题、证据和验收单位。
+- [多机器人管理平台中文 RFP 与 15 项验收](MULTI_ROBOT_PLATFORM_RFP_ZH.md) — 机器人身份、适配器、地图、任务、权限、失败恢复和企业接口的采购矩阵。
+- [机器可读多机器人平台验收矩阵](data/multi_robot_platform_rfp_zh.json) — 15 项结构化测试、失败注入、证据与交付物。
 - [Open a structured robot project brief](https://github.com/zxbteamo-lang/guma-robot-procurement-checklists/issues/new?template=robot-project-brief.yml) — describe the operating scenario, representative task, robot or payload, acceptance tests, location, scale and decision window.
 
 Do not post personal contact information, credentials, confidential site drawings, customer names or unpublished commercial details in a public GitHub issue. Use the private [GUMA project contact form](https://www.lllrobots.com/en/contact.html?intent=integration&utm_source=github&utm_medium=organic_repository&utm_campaign=robot-procurement-checklists-20260724&utm_term=project-brief-private-documents) for private documents.
